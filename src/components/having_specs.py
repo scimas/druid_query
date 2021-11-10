@@ -1,7 +1,7 @@
 from dataclasses import dataclass
-from typing import Union
 
 import filters
+from druid_types import DruidNativeType
 
 
 @dataclass
@@ -17,25 +17,25 @@ class Filter(HavingSpec):
 @dataclass
 class EqualTo(HavingSpec):
     aggregation: str
-    value: Union[str, int, float]
+    value: DruidNativeType
 
 
 @dataclass
 class GreaterThan(HavingSpec):
     aggregation: str
-    value: Union[str, int, float]
+    value: DruidNativeType
 
 
 @dataclass
 class LessThan(HavingSpec):
     aggregation: str
-    value: Union[str, int, float]
+    value: DruidNativeType
 
 
 @dataclass
 class DimSelector(HavingSpec):
     dimension: str
-    value: Union[str, int, float]
+    value: DruidNativeType
 
 
 @dataclass

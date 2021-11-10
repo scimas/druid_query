@@ -1,5 +1,6 @@
 from dataclasses import dataclass
-import typing
+
+from druid_types import DruidNativeType
 
 
 @dataclass
@@ -25,7 +26,7 @@ class Union(DataSource):
 @dataclass
 class Inline(DataSource):
     column_names: list[str]
-    rows: list[list[typing.Union[str, int, float]]]
+    rows: list[list[DruidNativeType]]
 
 
 @dataclass

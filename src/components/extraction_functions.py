@@ -1,7 +1,8 @@
 from dataclasses import dataclass
-from typing import Optional, Union
+from typing import Optional
 
 from search_query_specs import SearchQuerySpec
+from druid_types import DruidNativeType
 from granularities import Granularity
 from lookups import Lookup
 
@@ -16,7 +17,7 @@ class Regex(ExtractionFunction):
     expr: str
     index: Optional[int] = None
     replace_missing_value: Optional[bool] = None
-    replace_missing_value_with: Optional[Union[str, int, float]] = None
+    replace_missing_value_with: Optional[DruidNativeType] = None
 
 
 @dataclass
@@ -66,7 +67,7 @@ class Javascript(ExtractionFunction):
 class RegisteredLookup(ExtractionFunction):
     lookup: str
     retain_missing_value: Optional[bool] = None
-    replace_missing_value_with: Optional[Union[str, int, float]] = None
+    replace_missing_value_with: Optional[DruidNativeType] = None
     injective: Optional[bool] = None
     optimize: Optional[bool] = None
 
@@ -75,7 +76,7 @@ class RegisteredLookup(ExtractionFunction):
 class Lookup(ExtractionFunction):
     lookup: Lookup
     retain_missing_value: Optional[bool] = None
-    replace_missing_value_with: Optional[Union[str, int, float]] = None
+    replace_missing_value_with: Optional[DruidNativeType] = None
     injective: Optional[bool] = None
     optiomize: Optional[bool] = None
 

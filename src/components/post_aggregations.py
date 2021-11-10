@@ -1,5 +1,7 @@
 from dataclasses import dataclass
-from typing import Optional, Union
+from typing import Optional
+
+from druid_types import DruidNativeType
 
 
 @dataclass
@@ -30,7 +32,7 @@ class FinalizingFieldAccess(PostAggregator):
 @dataclass
 class Constant(PostAggregator):
     name: str
-    value: Union[str, int, float]
+    value: DruidNativeType
 
 
 @dataclass

@@ -1,5 +1,7 @@
 from dataclasses import dataclass
-from typing import Optional, Union
+from typing import Optional
+
+from druid_types import DruidNativeType
 
 
 @dataclass
@@ -9,5 +11,5 @@ class Lookup:
 
 @dataclass
 class Map(Lookup):
-    map: dict[Union[str, int, float], Union[str, int, float]]
+    map: dict[DruidNativeType, DruidNativeType]
     injective: Optional[bool]

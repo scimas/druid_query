@@ -1,5 +1,6 @@
 from dataclasses import dataclass
-from typing import Union
+
+from druid_types import DruidNativeType
 
 
 @dataclass
@@ -9,19 +10,19 @@ class SearchQuerySpec:
 
 @dataclass
 class InsensitiveContains(SearchQuerySpec):
-    value: Union[str, int, float]
+    value: DruidNativeType
 
 
 @dataclass
 class Fragment(SearchQuerySpec):
     case_sensitive: bool
-    values: list[Union[str, int, float]]
+    values: list[DruidNativeType]
 
 
 @dataclass
 class Contains(SearchQuerySpec):
     case_sensitive: bool
-    value: Union[str, int, float]
+    value: DruidNativeType
 
 
 @dataclass

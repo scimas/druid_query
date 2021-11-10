@@ -1,6 +1,7 @@
 from dataclasses import dataclass
-from typing import Optional, Union
+from typing import Optional
 
+from druid_types import DruidNativeType
 from extraction_functions import ExtractionFunction
 import lookups
 
@@ -49,7 +50,7 @@ class Lookup(DimensionSpec):
     dimension: str
     output_name: str
     retain_missing_value: Optional[bool] = None
-    replace_missing_value_with: Optional[Union[str, int, float]] = None
+    replace_missing_value_with: Optional[DruidNativeType] = None
     lookup: Optional[lookups.Lookup] = None
     optimize: Optional[bool] = None
     name: Optional[str] = None
