@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
-import filters
-from druid_types import DruidNativeType
+from . import filters
+from .druid_types import DruidNativeType
 
 
 @dataclass

@@ -1,10 +1,10 @@
 from dataclasses import dataclass
 from typing import Optional
 
-from dimension_specs import DimensionSpec
-from extraction_functions import ExtractionFunction
-from search_query_specs import SearchQuerySpec
-from intervals import Interval
+from .dimension_specs import DimensionSpec
+from .extraction_functions import ExtractionFunction
+from .search_query_specs import SearchQuerySpec
+from .intervals import Interval
 
 
 @dataclass

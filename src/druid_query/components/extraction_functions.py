@@ -1,10 +1,10 @@
 from dataclasses import dataclass
 from typing import Optional
 
-from search_query_specs import SearchQuerySpec
-from druid_types import DruidNativeType
-from granularities import Granularity
-from lookups import Lookup
+from .search_query_specs import SearchQuerySpec
+from .druid_types import DruidNativeType
+from .granularities import Granularity
+from .lookups import Lookup
 
 
 @dataclass

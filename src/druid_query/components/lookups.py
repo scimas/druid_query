@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import Optional
 
-from druid_types import DruidNativeType
+from .druid_types import DruidNativeType
 
 
 @dataclass

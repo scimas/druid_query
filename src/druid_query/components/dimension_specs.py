@@ -1,9 +1,9 @@
 from dataclasses import dataclass
 from typing import Optional
 
-from druid_types import DruidNativeType
-from extraction_functions import ExtractionFunction
-import lookups
+from .druid_types import DruidNativeType
+from .extraction_functions import ExtractionFunction
+from . import lookups
 
 
 @dataclass

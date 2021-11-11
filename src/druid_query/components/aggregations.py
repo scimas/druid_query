@@ -1,8 +1,8 @@
 from dataclasses import dataclass
 from typing import Optional
 
-from filters import Filter
-from dimension_specs import DimensionSpec
+from .filters import Filter
+from .dimension_specs import DimensionSpec
 
 @dataclass
 class Aggregator:

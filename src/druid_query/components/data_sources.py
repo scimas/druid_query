@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from druid_types import DruidNativeType
+from .druid_types import DruidNativeType
 
 
 @dataclass
