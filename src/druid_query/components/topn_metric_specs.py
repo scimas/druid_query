@@ -4,12 +4,15 @@ from typing import Optional
 
 @dataclass
 class TopNMetricSpec:
-    type: str
+    pass
 
 
 @dataclass
 class Numeric(TopNMetricSpec):
     metric: str
+
+    def __post_init__(self):
+        self.type = 'numeric'
 
 
 @dataclass
@@ -17,7 +20,13 @@ class Dimension(TopNMetricSpec):
     ordering: Optional[str]
     previous_stop: Optional[str]
 
+    def __post_init__(self):
+        self.type = 'dimension'
+
 
 @dataclass
 class Inverted(TopNMetricSpec):
     metric: TopNMetricSpec
+
+    def __post_init__(self):
+        self.type = 'inverted'

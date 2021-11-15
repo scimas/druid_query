@@ -9,7 +9,7 @@ from .intervals import Interval
 
 @dataclass
 class Filter:
-    type: str
+    pass
 
 
 @dataclass
@@ -18,10 +18,16 @@ class Selector(Filter):
     value: str
     extraction_fn: Optional[ExtractionFunction] = None
 
+    def __post_init__(self):
+        self.type = 'selector'
+
 
 @dataclass
 class ColumnComparison(Filter):
     dimensions: list[DimensionSpec]
+
+    def __post_init__(self):
+        self.type = 'columnComparison'
 
 
 @dataclass
@@ -30,20 +36,32 @@ class Regex(Filter):
     pattern: str
     extraction_fn: Optional[ExtractionFunction] = None
 
+    def __post_init__(self):
+        self.type = 'regex'
+
 
 @dataclass
 class And(Filter):
     fields: list[Filter]
+
+    def __post_init__(self):
+        self.type = 'and'
 
 
 @dataclass
 class Or(Filter):
     fields: list[Filter]
 
+    def __post_init__(self):
+        self.type = 'or'
+
 
 @dataclass
 class Not(Filter):
     field: Filter
+
+    def __post_init__(self):
+        self.type = 'not'
 
 
 @dataclass
@@ -52,12 +70,18 @@ class Javascript(Filter):
     function: str
     extraction_fn: Optional[ExtractionFunction] = None
 
+    def __post_init__(self):
+        self.type = 'javascript'
+
 
 @dataclass
 class Extraction(Filter):
     dimension: DimensionSpec
     value: str
     extraction_fn: ExtractionFunction
+
+    def __post_init__(self):
+        self.type = 'extraction'
 
 
 @dataclass
@@ -66,11 +90,17 @@ class Search(Filter):
     query: SearchQuerySpec
     extraction_fn: Optional[ExtractionFunction] = None
 
+    def __post_init__(self):
+        self.type = 'search'
+
 
 @dataclass
 class In(Filter):
     dimension: DimensionSpec
     values: list[str]
+
+    def __post_init__(self):
+        self.type = 'in'
 
 
 @dataclass
@@ -79,6 +109,9 @@ class Like(Filter):
     pattern: str
     escape: Optional[str] = None
     extraction_fn: Optional[ExtractionFunction] = None
+
+    def __post_init__(self):
+        self.type = 'like'
 
 
 @dataclass
@@ -91,6 +124,9 @@ class Bound(Filter):
     orderring: Optional[str] = None
     extraction_fn: Optional[ExtractionFunction] = None
 
+    def __post_init__(self):
+        self.type = 'bound'
+
 
 @dataclass
 class Interval(Filter):
@@ -98,20 +134,27 @@ class Interval(Filter):
     intervals: list[Interval]
     extraction_fn: Optional[ExtractionFunction] = None
 
+    def __post_init__(self):
+        self.type = 'interval'
+
 
 @dataclass
 class Expression(Filter):
     expression: str
 
+    def __post_init__(self):
+        self.type = 'expression'
+
 
 @dataclass
 class TrueF(Filter):
-    pass
+    def __post_init__(self):
+        self.type = 'true'
 
 
 @dataclass
 class SpatialBound:
-    type: str
+    pass
 
 
 @dataclass
@@ -119,11 +162,17 @@ class Rectangular(SpatialBound):
     min_coords: list[float]
     max_coords: list[float]
 
+    def __post_init__(self):
+        self.type = 'rectangular'
+
 
 @dataclass
 class Radius(SpatialBound):
     coords: list[float]
     radius: float
+
+    def __post_init__(self):
+        self.type = 'radius'
 
 
 @dataclass
@@ -131,8 +180,14 @@ class Polygon(SpatialBound):
     abscissa: list[float]
     ordinate: list[float]
 
+    def __post_init__(self):
+        self.type = 'polygon'
+
 
 @dataclass
 class Spatial(Filter):
     dimension: str
     bound: SpatialBound
+
+    def __post_init__(self):
+        self.type = 'spatial'

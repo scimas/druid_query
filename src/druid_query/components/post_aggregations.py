@@ -6,7 +6,7 @@ from .druid_types import DruidNativeType
 
 @dataclass
 class PostAggregator:
-    type: str
+    pass
 
 
 @dataclass
@@ -16,11 +16,17 @@ class Arithmetic(PostAggregator):
     fields: list[PostAggregator]
     ordering: Optional[str] = None
 
+    def __post_init__(self):
+        self.type = 'arithmetic'
+
 
 @dataclass
 class FieldAccess(PostAggregator):
     name: str
     field_name: str
+
+    def __post_init__(self):
+        self.type = 'fieldAccess'
 
 
 @dataclass
@@ -28,11 +34,17 @@ class FinalizingFieldAccess(PostAggregator):
     name: str
     field_name: str
 
+    def __post_init__(self):
+        self.type = 'finalizingFieldAccess'
+
 
 @dataclass
 class Constant(PostAggregator):
     name: str
     value: DruidNativeType
+
+    def __post_init__(self):
+        self.type = 'constant'
 
 
 @dataclass
@@ -40,11 +52,17 @@ class LongGreatest(PostAggregator):
     name: str
     fields: list[PostAggregator]
 
+    def __post_init__(self):
+        self.type = 'longGreatest'
+
 
 @dataclass
 class DoubleGreatest(PostAggregator):
     name: str
     fields: list[PostAggregator]
+
+    def __post_init__(self):
+        self.type = 'doubleGreates'
 
 
 @dataclass
@@ -52,11 +70,17 @@ class LongLeast(PostAggregator):
     name: str
     fields: list[PostAggregator]
 
+    def __post_init__(self):
+        self.type = 'longLeast'
+
 
 @dataclass
 class DoubleLeast(PostAggregator):
     name: str
     fields: list[PostAggregator]
+
+    def __post_init__(self):
+        self.type = 'doubleLeast'
 
 
 @dataclass
@@ -65,8 +89,14 @@ class Javascript(PostAggregator):
     field_names: list[str]
     function: str
 
+    def __post_init__(self):
+        self.type = 'javascript'
+
 
 @dataclass
 class HyperUniqueCardinality(PostAggregator):
     name: str
     field_name: str
+
+    def __post_init__(self):
+        self.type = 'hyperUniqueCardinality'

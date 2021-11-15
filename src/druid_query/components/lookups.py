@@ -6,10 +6,13 @@ from .druid_types import DruidNativeType
 
 @dataclass
 class Lookup:
-    type: str
+    pass
 
 
 @dataclass
 class Map(Lookup):
     map: dict[DruidNativeType, DruidNativeType]
     injective: Optional[bool]
+
+    def __post_init__(self):
+        self.type = 'map'
