@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
 from .druid_types import DruidNativeType
-
+from .. import queries
 
 @dataclass
 class DataSource:
@@ -31,7 +31,7 @@ class Inline(DataSource):
 
 @dataclass
 class Query(DataSource):
-    query: queries.Query
+    query: queries.NativeQuery
 
 
 @dataclass
