@@ -22,7 +22,7 @@ class Count(Aggregator):
 class LongSum(Aggregator):
     field_name: str
     name: Optional[str] = None
-    
+
     def __post_init__(self):
         self.type = 'longSum'
         if self.name is None:

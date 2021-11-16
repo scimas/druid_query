@@ -3,20 +3,12 @@ from typing import Optional
 
 
 @dataclass
-class Granularity:
+class NativeGranularity:
     pass
 
 
 @dataclass
-class Simple(Granularity):
-    name: str
-
-    def __post_init__(self):
-        self.type = 'simple'
-
-
-@dataclass
-class Duration(Granularity):
+class Duration(NativeGranularity):
     duration: int
     origin: Optional[str] = None
 
@@ -25,7 +17,7 @@ class Duration(Granularity):
 
 
 @dataclass
-class Period(Granularity):
+class Period(NativeGranularity):
     period: str
     origin: Optional[str] = None
     time_zone: Optional[str] = None

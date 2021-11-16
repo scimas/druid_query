@@ -5,7 +5,6 @@ from ..components import data_sources
 from ..components.virtual_columns import VirtualColumn
 from ..components.context import Context
 from ..components.intervals import Interval
-from ..components.granularities import Granularity
 from ..components.filters import Filter
 from ..components.aggregations import Aggregator
 from ..components.post_aggregations import PostAggregator
@@ -14,7 +13,7 @@ from ..components.limit_specs import LimitSpec
 from ..components.having_specs import HavingSpec
 from ..components.search_query_specs import SearchQuerySpec
 from ..components.to_include import ToInclude
-from ..components.druid_types import DruidSqlType, Dimension
+from ..components.druid_types import DruidSqlType, Dimension, Granularity
 
 __all__ = [
     'Timeseries', 'TopN', 'GroupBy', 'Scan', 'Search', 'TimeBoundary',
