@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import Optional
 
-from .druid_types import Dimension
+from .dimension_specs import Dimension
 from .extraction_functions import ExtractionFunction
 from .search_query_specs import SearchQuerySpec
 from .intervals import Interval

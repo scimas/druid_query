@@ -2,6 +2,8 @@ from dataclasses import dataclass
 from typing import Optional
 
 from ..components import data_sources
+from ..components.dimension_specs import Dimension
+from ..components.granularities import Granularity
 from ..components.virtual_columns import VirtualColumn
 from ..components.context import Context
 from ..components.intervals import Interval
@@ -13,7 +15,7 @@ from ..components.limit_specs import LimitSpec
 from ..components.having_specs import HavingSpec
 from ..components.search_query_specs import SearchQuerySpec
 from ..components.to_include import ToInclude
-from ..components.druid_types import DruidSqlType, Dimension, Granularity
+from ..components.druid_types import DruidSqlType
 
 __all__ = [
     'Timeseries', 'TopN', 'GroupBy', 'Scan', 'Search', 'TimeBoundary',

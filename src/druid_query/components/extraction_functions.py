@@ -2,7 +2,8 @@ from dataclasses import dataclass
 from typing import Optional
 
 from .search_query_specs import SearchQuerySpec
-from .druid_types import DruidNativeType, Granularity
+from .granularities import Granularity
+from .druid_types import DruidNativeType
 from .lookups import Lookup
 
 

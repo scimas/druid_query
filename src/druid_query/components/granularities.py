@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import Optional
+from typing import Optional, Union
 
 
 @dataclass
@@ -24,3 +24,5 @@ class Period(NativeGranularity):
 
     def __post_init__(self):
         self.type = 'period'
+
+Granularity = Union[NativeGranularity, str]

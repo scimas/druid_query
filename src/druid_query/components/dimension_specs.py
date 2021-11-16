@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import Optional
+from typing import Optional, Union
 
 from .druid_types import DruidNativeType
 from .extraction_functions import ExtractionFunction
@@ -72,3 +72,5 @@ class Lookup(DimensionSpec):
 
     def __post_init__(self):
         self.type = 'lookup'
+
+Dimension = Union[DimensionSpec, str]

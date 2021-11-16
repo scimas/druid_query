@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from typing import Optional
 
 from .filters import Filter
-from .druid_types import Dimension
+from .dimension_specs import Dimension
 
 
 @dataclass
