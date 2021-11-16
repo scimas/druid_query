@@ -22,20 +22,23 @@ class Arithmetic(PostAggregator):
 
 @dataclass
 class FieldAccess(PostAggregator):
-    name: str
     field_name: str
+    name: Optional[str] = None
 
     def __post_init__(self):
         self.type = 'fieldAccess'
-
+        if self.name is None:
+            self.name = self.field_name
 
 @dataclass
 class FinalizingFieldAccess(PostAggregator):
-    name: str
     field_name: str
+    name: Optional[str] = None
 
     def __post_init__(self):
         self.type = 'finalizingFieldAccess'
+        if self.name is None:
+            self.name = self.field_name
 
 
 @dataclass
@@ -95,8 +98,10 @@ class Javascript(PostAggregator):
 
 @dataclass
 class HyperUniqueCardinality(PostAggregator):
-    name: str
     field_name: str
+    name: Optional[str] = None
 
     def __post_init__(self):
         self.type = 'hyperUniqueCardinality'
+        if self.name is None:
+            self.name = self.field_name
