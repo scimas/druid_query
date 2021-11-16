@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from typing import Any
+import typing
 
 from .druid_types import DruidNativeType
 
@@ -63,3 +64,5 @@ class Join(DataSource):
 
     def __post_init__(self):
         self.type = 'join'
+
+Datasource = typing.Union[DataSource, str]

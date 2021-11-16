@@ -33,7 +33,7 @@ class NativeQuery(Query):
 
 @dataclass
 class Timeseries(NativeQuery):
-    data_source: data_sources.DataSource
+    data_source: data_sources.Datasource
     intervals: list[Interval]
     granularity: Granularity
     descending: Optional[bool] = None
@@ -50,7 +50,7 @@ class Timeseries(NativeQuery):
 
 @dataclass
 class TopN(NativeQuery):
-    data_source: data_sources.DataSource
+    data_source: data_sources.Datasource
     intervals: list[Interval]
     granularity: Granularity
     dimension: Dimension
@@ -68,7 +68,7 @@ class TopN(NativeQuery):
 
 @dataclass
 class GroupBy(NativeQuery):
-    data_source: data_sources.DataSource
+    data_source: data_sources.Datasource
     intervals: list[Interval]
     granularity: Granularity
     dimensions: list[Dimension]
@@ -87,7 +87,7 @@ class GroupBy(NativeQuery):
 
 @dataclass
 class Scan(NativeQuery):
-    data_source: data_sources.DataSource
+    data_source: data_sources.Datasource
     intervals: list[Interval]
     result_format: Optional[str] = None
     filter: Optional[Filter] = None
@@ -106,7 +106,7 @@ class Scan(NativeQuery):
 
 @dataclass
 class Search(NativeQuery):
-    data_source: data_sources.DataSource
+    data_source: data_sources.Datasource
     intervals: list[Interval]
     query: SearchQuerySpec
     granularity: Optional[Granularity] = None
@@ -123,7 +123,7 @@ class Search(NativeQuery):
 
 @dataclass
 class TimeBoundary(NativeQuery):
-    data_source: data_sources.DataSource
+    data_source: data_sources.Datasource
     bound: Optional[str] = None
     filter: Optional[Filter] = None
     virtual_columns: Optional[list[VirtualColumn]] = None
@@ -135,7 +135,7 @@ class TimeBoundary(NativeQuery):
 
 @dataclass
 class SegmentMetadata(NativeQuery):
-    data_source: data_sources.DataSource
+    data_source: data_sources.Datasource
     intervals: list[Interval]
     to_include: Optional[ToInclude] = None
     merge: Optional[bool] = None
@@ -150,7 +150,7 @@ class SegmentMetadata(NativeQuery):
 
 @dataclass
 class DatasourceMetadata(NativeQuery):
-    data_source: data_sources.DataSource
+    data_source: data_sources.Datasource
     virtual_columns: Optional[list[VirtualColumn]] = None
     context: Optional[Context] = None
 
