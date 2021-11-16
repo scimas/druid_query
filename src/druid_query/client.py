@@ -3,7 +3,6 @@ import json
 from typing import Optional
 
 from requests import Session
-from requests_futures.sessions import FuturesSession
 
 from .queries import NativeQuery, Sql
 from .components.data_sources import Query
