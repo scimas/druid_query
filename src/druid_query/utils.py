@@ -1,6 +1,5 @@
 from typing import Union
 
-from .components.granularities import Simple
 from .components.intervals import Interval
 
 
@@ -10,8 +9,6 @@ def camelCase(s: str):
 
 
 def druid_serealize(obj) -> Union[dict, str]:
-    if isinstance(obj, Simple):
-        return obj.name
     if isinstance(obj, Interval):
         return obj.start + '/' + obj.end
     out_dict = {}
