@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import Optional
 
-from .dimension_specs import DimensionSpec
+from .druid_types import Dimension
 from .extraction_functions import ExtractionFunction
 from .search_query_specs import SearchQuerySpec
 from .intervals import Interval
@@ -14,7 +14,7 @@ class Filter:
 
 @dataclass
 class Selector(Filter):
-    dimension: DimensionSpec
+    dimension: Dimension
     value: str
     extraction_fn: Optional[ExtractionFunction] = None
 
@@ -24,7 +24,7 @@ class Selector(Filter):
 
 @dataclass
 class ColumnComparison(Filter):
-    dimensions: list[DimensionSpec]
+    dimensions: list[Dimension]
 
     def __post_init__(self):
         self.type = 'columnComparison'
@@ -32,7 +32,7 @@ class ColumnComparison(Filter):
 
 @dataclass
 class Regex(Filter):
-    dimension: DimensionSpec
+    dimension: Dimension
     pattern: str
     extraction_fn: Optional[ExtractionFunction] = None
 
@@ -66,7 +66,7 @@ class Not(Filter):
 
 @dataclass
 class Javascript(Filter):
-    dimension: DimensionSpec
+    dimension: Dimension
     function: str
     extraction_fn: Optional[ExtractionFunction] = None
 
@@ -76,7 +76,7 @@ class Javascript(Filter):
 
 @dataclass
 class Extraction(Filter):
-    dimension: DimensionSpec
+    dimension: Dimension
     value: str
     extraction_fn: ExtractionFunction
 
@@ -86,7 +86,7 @@ class Extraction(Filter):
 
 @dataclass
 class Search(Filter):
-    dimension: DimensionSpec
+    dimension: Dimension
     query: SearchQuerySpec
     extraction_fn: Optional[ExtractionFunction] = None
 
@@ -96,7 +96,7 @@ class Search(Filter):
 
 @dataclass
 class In(Filter):
-    dimension: DimensionSpec
+    dimension: Dimension
     values: list[str]
 
     def __post_init__(self):

@@ -2,7 +2,6 @@ from dataclasses import dataclass
 from typing import Optional
 
 from ..components import data_sources
-from ..components.dimension_specs import DimensionSpec
 from ..components.virtual_columns import VirtualColumn
 from ..components.context import Context
 from ..components.intervals import Interval
@@ -15,7 +14,7 @@ from ..components.limit_specs import LimitSpec
 from ..components.having_specs import HavingSpec
 from ..components.search_query_specs import SearchQuerySpec
 from ..components.to_include import ToInclude
-from ..components.druid_types import DruidSqlType
+from ..components.druid_types import DruidSqlType, Dimension
 
 __all__ = [
     'Timeseries', 'TopN', 'GroupBy', 'Scan', 'Search', 'TimeBoundary',
@@ -53,7 +52,7 @@ class TopN(NativeQuery):
     data_source: data_sources.DataSource
     intervals: list[Interval]
     granularity: Granularity
-    dimension: DimensionSpec
+    dimension: Dimension
     threshold: int
     metric: TopNMetricSpec
     filter: Optional[Filter] = None
@@ -71,7 +70,7 @@ class GroupBy(NativeQuery):
     data_source: data_sources.DataSource
     intervals: list[Interval]
     granularity: Granularity
-    dimensions: list[DimensionSpec]
+    dimensions: list[Dimension]
     limit_spec: Optional[LimitSpec] = None
     having: Optional[HavingSpec] = None
     filter: Optional[Filter] = None

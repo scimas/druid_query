@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from typing import Optional
 
 from .filters import Filter
-from .dimension_specs import DimensionSpec
+from .druid_types import Dimension
 
 
 @dataclass
@@ -285,7 +285,7 @@ class Grouping(Aggregator):
 @dataclass
 class Cardinality(Aggregator):
     name: str
-    fields: list[DimensionSpec]
+    fields: list[Dimension]
     by_row: Optional[bool] = None
     round: Optional[bool] = None
 
