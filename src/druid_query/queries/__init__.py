@@ -17,6 +17,11 @@ from ..components.search_query_specs import SearchQuerySpec
 from ..components.to_include import ToInclude
 from ..components.druid_types import DruidSqlType
 
+__all__ = [
+    'Timeseries', 'TopN', 'GroupBy', 'Scan', 'Search', 'TimeBoundary',
+    'SegmentMetadata', 'DatasourceMetadata', 'Sql'
+]
+
 
 class Query:
     pass
@@ -156,7 +161,7 @@ class DatasourceMetadata(NativeQuery):
 @dataclass
 class Sql(Query):
     query: str
-    result_format: Optional[str] = None
+    result_format: Optional[str] = 'object'
     header: Optional[bool] = None
     parameters: Optional[list[DruidSqlType]] = None
     context: Optional[Context] = None
