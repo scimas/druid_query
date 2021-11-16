@@ -1,4 +1,4 @@
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from typing import Optional
 
 from .filters import Filter
@@ -20,194 +20,236 @@ class Count(Aggregator):
 
 @dataclass
 class LongSum(Aggregator):
-    name: str
     field_name: str
-
+    name: Optional[str] = None
+    
     def __post_init__(self):
         self.type = 'longSum'
+        if self.name is None:
+            self.name = self.field_name
 
 
 @dataclass
 class DoubleSum(Aggregator):
-    name: str
     field_name: str
+    name: Optional[str] = None
 
     def __post_init__(self):
         self.type = 'doubleSum'
+        if self.name is None:
+            self.name = self.field_name
 
 
 @dataclass
 class FloatSum(Aggregator):
-    name: str
     field_name: str
+    name: Optional[str] = None
 
     def __post_init__(self):
         self.type = 'floatSum'
+        if self.name is None:
+            self.name = self.field_name
 
 
 @dataclass
 class LongMin(Aggregator):
-    name: str
     field_name: str
+    name: Optional[str] = None
 
     def __post_init__(self):
         self.type = 'longMin'
+        if self.name is None:
+            self.name = self.field_name
 
 
 @dataclass
 class DoubleMin(Aggregator):
-    name: str
     field_name: str
+    name: Optional[str] = None
 
     def __post_init__(self):
         self.type = 'doubleMin'
+        if self.name is None:
+            self.name = self.field_name
 
 
 @dataclass
 class FloatMin(Aggregator):
-    name: str
     field_name: str
+    name: Optional[str] = None
 
     def __post_init__(self):
         self.type = 'floatMin'
+        if self.name is None:
+            self.name = self.field_name
 
 
 @dataclass
 class LongMax(Aggregator):
-    name: str
     field_name: str
+    name: Optional[str] = None
 
     def __post_init__(self):
         self.type = 'longMax'
+        if self.name is None:
+            self.name = self.field_name
 
 
 @dataclass
 class DoubleMax(Aggregator):
-    name: str
     field_name: str
+    name: Optional[str] = None
 
     def __post_init__(self):
         self.type = 'doubleMax'
+        if self.name is None:
+            self.name = self.field_name
 
 
 @dataclass
 class FloatMax(Aggregator):
-    name: str
     field_name: str
+    name: Optional[str] = None
 
     def __post_init__(self):
         self.type = 'floatMax'
+        if self.name is None:
+            self.name = self.field_name
 
 
 @dataclass
 class LongFirst(Aggregator):
-    name: str
     field_name: str
+    name: Optional[str] = None
 
     def __post_init__(self):
         self.type = 'longFirst'
+        if self.name is None:
+            self.name = self.field_name
 
 
 @dataclass
 class DoubleFirst(Aggregator):
-    name: str
     field_name: str
+    name: Optional[str] = None
 
     def __post_init__(self):
         self.type = 'doubleFirst'
+        if self.name is None:
+            self.name = self.field_name
 
 
 @dataclass
 class FloatFirst(Aggregator):
-    name: str
     field_name: str
+    name: Optional[str] = None
 
     def __post_init__(self):
         self.type = 'floatFirst'
+        if self.name is None:
+            self.name = self.field_name
 
 
 @dataclass
 class StringFirst(Aggregator):
-    name: str
     field_name: str
+    name: Optional[str] = None
     max_string_bytes: Optional[int] = None
 
     def __post_init__(self):
         self.type = 'stringFirst'
+        if self.name is None:
+            self.name = self.field_name
 
 
 @dataclass
 class LongLast(Aggregator):
-    name: str
     field_name: str
+    name: Optional[str] = None
 
     def __post_init__(self):
         self.type = 'longLast'
+        if self.name is None:
+            self.name = self.field_name
 
 
 @dataclass
 class DoubleLast(Aggregator):
-    name: str
     field_name: str
+    name: Optional[str] = None
 
     def __post_init__(self):
         self.type = 'doubleLast'
+        if self.name is None:
+            self.name = self.field_name
 
 
 @dataclass
 class FloatLast(Aggregator):
-    name: str
     field_name: str
+    name: Optional[str] = None
 
     def __post_init__(self):
         self.type = 'floatLast'
+        if self.name is None:
+            self.name = self.field_name
 
 
 @dataclass
 class StringLast(Aggregator):
-    name: str
     field_name: str
+    name: Optional[str] = None
     max_string_bytes: Optional[int] = None
 
     def __post_init__(self):
         self.type = 'stringLast'
+        if self.name is None:
+            self.name = self.field_name
 
 
 @dataclass
 class LongAny(Aggregator):
-    name: str
     field_name: str
+    name: Optional[str] = None
 
     def __post_init__(self):
         self.type = 'longAny'
+        if self.name is None:
+            self.name = self.field_name
 
 
 @dataclass
 class DoubleAny(Aggregator):
-    name: str
     field_name: str
+    name: Optional[str] = None
 
     def __post_init__(self):
         self.type = 'doubleAny'
+        if self.name is None:
+            self.name = self.field_name
 
 
 @dataclass
 class FloatAny(Aggregator):
-    name: str
     field_name: str
+    name: Optional[str] = None
 
     def __post_init__(self):
         self.type = 'floatAny'
+        if self.name is None:
+            self.name = self.field_name
 
 
 @dataclass
 class StringAny(Aggregator):
-    name: str
     field_name: str
+    name: Optional[str] = None
     max_string_bytes: Optional[int] = None
 
     def __post_init__(self):
         self.type = 'stringAny'
+        if self.name is None:
+            self.name = self.field_name
 
 
 @dataclass
@@ -253,10 +295,12 @@ class Cardinality(Aggregator):
 
 @dataclass
 class HyperUnique(Aggregator):
-    name: str
     field_name: str
+    name: Optional[str] = None
     is_input_hyper_unique: Optional[bool] = None
     round: Optional[bool] = None
 
     def __post_init__(self):
         self.type = 'hyperUnique'
+        if self.name is None:
+            self.name = self.field_name
