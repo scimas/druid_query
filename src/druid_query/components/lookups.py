@@ -12,7 +12,7 @@ class Lookup:
 @dataclass
 class Map(Lookup):
     map: dict[DruidNativeType, DruidNativeType]
-    injective: Optional[bool]
+    injective: Optional[bool] = None
 
     def __post_init__(self):
         self.type = 'map'

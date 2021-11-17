@@ -4,7 +4,7 @@ from typing import Optional
 from .search_query_specs import SearchQuerySpec
 from .granularities import Granularity
 from .druid_types import DruidNativeType
-from .lookups import Lookup
+from . import lookups
 
 
 @dataclass
@@ -79,7 +79,7 @@ class Time(ExtractionFunction):
 @dataclass
 class Javascript(ExtractionFunction):
     function: str
-    injective: Optional[bool]
+    injective: Optional[bool] = None
 
     def __post_init__(self):
         self.type = 'javascript'
@@ -99,7 +99,7 @@ class RegisteredLookup(ExtractionFunction):
 
 @dataclass
 class Lookup(ExtractionFunction):
-    lookup: Lookup
+    lookup: lookups.Lookup
     retain_missing_value: Optional[bool] = None
     replace_missing_value_with: Optional[DruidNativeType] = None
     injective: Optional[bool] = None
