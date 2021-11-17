@@ -10,6 +10,9 @@ class DataSource:
     pass
 
 
+Datasource = typing.Union[DataSource, str]
+
+
 @dataclass
 class Table(DataSource):
     name: str
@@ -56,13 +59,11 @@ class Query(DataSource):
 
 @dataclass
 class Join(DataSource):
-    left: DataSource
-    right: DataSource
+    left: Datasource
+    right: Datasource
     right_prefix: str
     condition: str
     join_type: str
 
     def __post_init__(self):
         self.type = 'join'
-
-Datasource = typing.Union[DataSource, str]
