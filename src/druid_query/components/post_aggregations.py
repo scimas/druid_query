@@ -65,7 +65,7 @@ class DoubleGreatest(PostAggregator):
     fields: list[PostAggregator]
 
     def __post_init__(self):
-        self.type = 'doubleGreates'
+        self.type = 'doubleGreatest'
 
 
 @dataclass
