@@ -4,7 +4,7 @@ from typing import Optional
 from .dimension_specs import Dimension
 from .extraction_functions import ExtractionFunction
 from .search_query_specs import SearchQuerySpec
-from .intervals import Interval
+from . import intervals
 
 
 @dataclass
@@ -131,7 +131,7 @@ class Bound(Filter):
 @dataclass
 class Interval(Filter):
     dimension: str
-    intervals: list[Interval]
+    intervals: list[intervals.Interval]
     extraction_fn: Optional[ExtractionFunction] = None
 
     def __post_init__(self):
