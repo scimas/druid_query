@@ -17,8 +17,8 @@ class Numeric(TopNMetricSpec):
 
 @dataclass
 class Dimension(TopNMetricSpec):
-    ordering: Optional[str]
-    previous_stop: Optional[str]
+    ordering: Optional[str] = None
+    previous_stop: Optional[str] = None
 
     def __post_init__(self):
         self.type = 'dimension'
