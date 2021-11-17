@@ -11,7 +11,7 @@ class VirtualColumn:
 class Expression(VirtualColumn):
     name: str
     expression: str
-    output_type: Optional[str]
+    output_type: Optional[str] = None
 
     def __post_init__(self):
         self.type = 'expression'
