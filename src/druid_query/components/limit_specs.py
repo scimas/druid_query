@@ -8,20 +8,17 @@ class LimitSpec:
 
 
 @dataclass
-class Default(LimitSpec):
-    limit: Optional[int] = None
-    offset: Optional[int] = None
-    columns: Optional[list[LimitSpec]] = None
-
-    def __post_init__(self):
-        self.type = 'default'
+class OrderByColumnSpec:
+    dimension: str
+    direction: str
+    dimension_order: Optional[str] = None
 
 
 @dataclass
-class OrderByColumnSpec(LimitSpec):
-    dimension: str
-    direction: str
-    dimension_order: Optional[str]
+class Default(LimitSpec):
+    limit: Optional[int] = None
+    offset: Optional[int] = None
+    columns: Optional[list[OrderByColumnSpec]] = None
 
     def __post_init__(self):
-        self.type = 'orderByColumnSpec'
+        self.type = 'default'
