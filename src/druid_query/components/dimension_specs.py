@@ -11,6 +11,9 @@ class DimensionSpec:
     pass
 
 
+Dimension = Union[DimensionSpec, str]
+
+
 @dataclass
 class Default(DimensionSpec):
     dimension: str
@@ -34,7 +37,7 @@ class Extraction(DimensionSpec):
 
 @dataclass
 class ListFiltered(DimensionSpec):
-    delegate: DimensionSpec
+    delegate: Dimension
     values: list[str]
     is_whitelist: Optional[bool] = None
 
@@ -44,7 +47,7 @@ class ListFiltered(DimensionSpec):
 
 @dataclass
 class RegexFiltered(DimensionSpec):
-    delegate: DimensionSpec
+    delegate: Dimension
     pattern: str
 
     def __post_init__(self):
@@ -53,7 +56,7 @@ class RegexFiltered(DimensionSpec):
 
 @dataclass
 class PrefixFiltered(DimensionSpec):
-    delegate: DimensionSpec
+    delegate: Dimension
     prefix: str
 
     def __post_init__(self):
@@ -72,5 +75,3 @@ class Lookup(DimensionSpec):
 
     def __post_init__(self):
         self.type = 'lookup'
-
-Dimension = Union[DimensionSpec, str]
