@@ -7,6 +7,9 @@ class NativeGranularity:
     pass
 
 
+Granularity = Union[NativeGranularity, str]
+
+
 @dataclass
 class Duration(NativeGranularity):
     duration: int
@@ -24,5 +27,3 @@ class Period(NativeGranularity):
 
     def __post_init__(self):
         self.type = 'period'
-
-Granularity = Union[NativeGranularity, str]
