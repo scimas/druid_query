@@ -26,6 +26,15 @@ class Client:
         self.native_endpoint = native_endpoint
         self.sql_endpoint = sql_endpoint
         self.inner = session
+    
+    
+    def __enter__(self):
+        return self
+
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        self.inner.close()
+    
 
     def execute(self, query: Query):
         if isinstance(query, NativeQuery):
@@ -51,6 +60,14 @@ class AsyncClient:
         self.sql_endpoint = sql_endpoint
         self.inner = session
     
+    async def __aenter__(self):
+        return self
+
+
+    async def __aexit__(self, exc_type, exc_value, traceback):
+        await self.inner.aclose()
+
+
     async def execute(self, query: Query):
         if isinstance(query, NativeQuery):
             assert self.native_endpoint is not None
