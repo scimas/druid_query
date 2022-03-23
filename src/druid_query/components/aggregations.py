@@ -107,6 +107,17 @@ class DoubleMax(Aggregator):
 
 
 @dataclass
+class DoubleMean(Aggregator):
+    field_name: str
+    name: Optional[str] = None
+
+    def __post_init__(self):
+        self.type = 'doubleMean'
+        if self.name is None:
+            self.name = self.field_name
+
+
+@dataclass
 class FloatMax(Aggregator):
     field_name: str
     name: Optional[str] = None
